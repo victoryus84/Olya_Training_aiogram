@@ -1,3 +1,5 @@
+user_data = {}
+
 # Define the languages
 LANGUAGES_DICT = {
     'en': "English 🇬🇧",

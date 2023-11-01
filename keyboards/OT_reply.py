@@ -37,7 +37,6 @@ language_markup = ReplyKeyboardMarkup(
     resize_keyboard=True,
     one_time_keyboard=True,
     input_field_placeholder="Choose a language",
-    selective=True
 )
     
         

@@ -23,7 +23,7 @@ sub_channel = InlineKeyboardMarkup(
 begin_markup = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="Let's begin\nSă începem.", callback_data="begin")
+            InlineKeyboardButton(text="Let's begin \ Să începem.", callback_data="begin")
         ]
     ]
 )
