@@ -1,6 +1,6 @@
 # Define the welcome message for both English and Romanian
 BEGIN_MESSAGE = {
-   'ro': (
+   'all': (
         "Are you gearing up for university interviews and entrance exams in the UK? Look no further! "
         "Olya Training is here to guide you. Our tailored programs boost your skills and confidence, "
         "ensuring you shine in every aspect of the admissions process."
@@ -13,7 +13,7 @@ BEGIN_MESSAGE = {
 }
 # Define the welcome message for both English and Romanian
 LANGUAGE_MESSAGE = {
-    'ro': (
+    'all': (
         "If you press the ""English"" button, the training will follow only in English 👇\n"
         "\nDacă apesi butonul ""Romanian"" va urma pregătirea în limba Engleza cu traducere în Română 👇"
     )
@@ -26,7 +26,7 @@ UNIVERSITY_MESSAGES = {
     ),
     'ro': (
         "Now, please find the University and Course you applied for."
-        "Acum, te rog să găsești Universitatea si Cursul la care ai aplicat."
+        "\nAcum, te rog să găsești Universitatea si Cursul la care ai aplicat."
     )
 }
 
@@ -37,7 +37,7 @@ COURSES_MESSAGES = {
     ),
     'ro': (
        "Select your course..."
-       "Alege-ți cursul dorit..."
+       "\nAlege-ți cursul dorit..."
     )
 }
 

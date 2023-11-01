@@ -23,26 +23,35 @@ async def help(message: Message, bot: Bot):
         
 # @router.message(CommandStart(), IsAdmin(1490170564))
 @router.message(CommandStart())
-async def start_handler(message: Message, state: FSMContext) -> None:
+async def start_handler(message: Message, state: FSMContext):
     print("start_handler")
     await state.set_state(Form.BEGIN)
     await message.answer(BEGIN_MESSAGE.get("ro"), reply_markup=OT_inline.begin_markup)
     
-    
+@router.message(Form.BEGIN)    
 @router.callback_query(F.data == "begin")
 async def language_choise(callback: CallbackQuery, state: FSMContext):
     print("language_choise")
-    await callback.message.answer(LANGUAGE_MESSAGE.get("ro"), reply_markup=OT_builders.languages_inline())  
+    await state.set_state(Form.LANGUAGES)
+    await callback.message.answer(LANGUAGE_MESSAGE.get("ro"), reply_markup=OT_builders.language_reply())  
     
-@router.message(Form.BEGIN)
-async def univerersity_handler(message: Message, state: FSMContext) -> None:
+@router.message(Form.LANGUAGES)
+async def univerersity_handler(message: Message, state: FSMContext):
     print("univerersity_handler")
     await state.update_data(name=message.text)
     await state.set_state(Form.UNIVERSITIES)
     print(f"univerersity_handler {message.text}")
-    await message.answer(UNIVERSITY_MESSAGES.get("ro"), reply_markup=OT_builders.universities_inline())
+    await message.answer(UNIVERSITY_MESSAGES.get("ro"), reply_markup=OT_builders.universities_reply())
     
-# @router.callback_query(F.data == "begin")
+@router.message(Form.UNIVERSITIES)
+async def course_handler(message: Message, state: FSMContext):
+    print("course_handler")
+    await state.update_data(name=message.text)
+    await state.set_state(Form.COURSES)
+    print(f"course_handler {message.text}")
+    await message.answer(COURSES_MESSAGES.get("ro"), reply_markup=OT_builders.courses_reply())
+        
+# @router.callback_query(F.data == "begin") 
 # async def send_random_value(callback: CallbackQuery):
 #     await callback.message.answer(COURSES_MESSAGES.get("ro"), reply_markup=OT_builders.courses_inline())      
     

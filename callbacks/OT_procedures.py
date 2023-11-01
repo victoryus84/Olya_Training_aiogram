@@ -6,7 +6,7 @@ from aiogram.exceptions import TelegramBadRequest
 
 from keyboards import fabrics
 from data.subloader import get_json
-from data.OT_constants import COURSES
+from data.OT_constants import COURSES_DICT
 
 router = Router()
 
@@ -21,7 +21,7 @@ def get_dict_key_from_value(val, my_dict):
 
 # Funcția care returnează cursurile unei universități
 def get_courses_for_university(university_name):
-    return COURSES.get(university_name, [])
+    return COURSES_DICT.get(university_name, [])
 
 # @router.callback_query_handler(F.Text(equals="my_button_data"))
 # async def my_button_callback(callback_query: CallbackQuery):

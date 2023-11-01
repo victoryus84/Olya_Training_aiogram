@@ -1,7 +1,7 @@
 from aiogram import Router, Bot, F
 from aiogram.types import Message, CallbackQuery
 from keyboards import OT_builders
-from data.OT_constants import LANGUAGES_ARRAY, LANGUAGES_DICT, UNIVERSITIES_ARRAY, COURSES
+from data.OT_constants import LANGUAGES_ARRAY, LANGUAGES_DICT, UNIVERSITIES_ARRAY, COURSES_DICT
 from data.OT_messages import UNIVERSITY_MESSAGES, COURSES_MESSAGES
 from aiogram.fsm.context import FSMContext
 from utils.states import Form

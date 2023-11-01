@@ -1,6 +1,6 @@
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 from aiogram.types import InlineKeyboardButton
-from data.OT_constants import UNIVERSITIES_ARRAY, COURSES, LANGUAGES_ARRAY
+from data.OT_constants import UNIVERSITIES_ARRAY, COURSES_DICT, LANGUAGES_ARRAY
 from callbacks.OT_procedures import *
 
 def languages_inline():
@@ -50,11 +50,19 @@ def profile(text: str | list):
     [builder.button(text=txt) for txt in text]
     return builder.as_markup(resize_keyboard=True, one_time_keyboard=True)
 
+def language_reply():
+    
+    builder = ReplyKeyboardBuilder()
+    [builder.button(text=item) for item in LANGUAGES_ARRAY]
+    builder.adjust(*[2] * 4)
+
+    return builder.as_markup(resize_keyboard=True, one_time_keyboard=True, input_field_placeholder="Choose a language")
+
 def universities_reply():
     
     builder = ReplyKeyboardBuilder()
     [builder.button(text=item) for item in UNIVERSITIES_ARRAY]
-    builder.button(text="Cancel")
+    # builder.button(text="Cancel")
     builder.adjust(*[4] * 4)
 
     return builder.as_markup(resize_keyboard=True)
@@ -65,7 +73,7 @@ def courses_reply(university):
     
     builder = ReplyKeyboardBuilder()
     [builder.button(text=item) for item in univ_courses]
-    builder.button(text="Cancel")
+    # builder.button(text="Cancel")
     builder.adjust(*[1] * 4)
 
     return builder.as_markup(resize_keyboard=True)
