@@ -3,7 +3,7 @@ import logging
 import sys
 from aiogram import Bot, Dispatcher
 
-from handlers import OT_user_begin, OT_user_language, OT_user_university, OT_user_course
+from handlers import OT_user_begin, OT_user_handlers
 from middlewares.antiflood import AntiFloodMiddleware
 # Load .env
 import os
@@ -14,8 +14,6 @@ load_dotenv()
 TOKEN = os.getenv('BOTTOKEN')
 API_ID = os.getenv('API_ID')
 API_HASH = os.getenv('API_HASH')
-
-
     
 async def main() -> None:
     bot = Bot(TOKEN)
@@ -26,10 +24,7 @@ async def main() -> None:
 
     dp.include_routers(
         OT_user_begin.router,
-        OT_user_language.router,
-        OT_user_university.router,
-        OT_user_course.router,
-        
+        OT_user_handlers.router,
     )
 
     await bot.delete_webhook(drop_pending_updates=True)

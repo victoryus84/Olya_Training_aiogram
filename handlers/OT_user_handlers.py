@@ -1,16 +1,11 @@
-from aiogram import Router, F
+from aiogram import Router, Bot, F
 from aiogram.types import Message, CallbackQuery
 from keyboards import OT_builders
 from data.OT_constants import LANGUAGES_ARRAY, LANGUAGES_DICT, UNIVERSITIES_ARRAY, COURSES
-
-
+from data.OT_messages import UNIVERSITY_MESSAGES, COURSES_MESSAGES
+from aiogram.fsm.context import FSMContext
+from utils.states import Form
 router = Router()
-
-
-
-
-
-
 
 # @router.message()
 # async def echo(message: Message):
@@ -35,4 +30,10 @@ router = Router()
         
 #         user_data["course"] = selected_course  
 #     else:
-#         await message.answer("Bye, bye!")  
+#         await message.answer("Bye, bye!")         
+        
+        
+            
+ 
+    
+    

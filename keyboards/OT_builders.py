@@ -3,26 +3,6 @@ from aiogram.types import InlineKeyboardButton
 from data.OT_constants import UNIVERSITIES_ARRAY, COURSES, LANGUAGES_ARRAY
 from callbacks.OT_procedures import *
 
-def universities_reply():
-    
-    builder = ReplyKeyboardBuilder()
-    [builder.button(text=item) for item in UNIVERSITIES_ARRAY]
-    builder.button(text="Cancel")
-    builder.adjust(*[4] * 4)
-
-    return builder.as_markup(resize_keyboard=True)
-
-def courses_reply(university):
-    
-    univ_courses = get_courses_for_university(university)
-    
-    builder = ReplyKeyboardBuilder()
-    [builder.button(text=item) for item in univ_courses]
-    builder.button(text="Cancel")
-    builder.adjust(*[1] * 4)
-
-    return builder.as_markup(resize_keyboard=True)
-
 def languages_inline():
     
     builder = InlineKeyboardBuilder()
@@ -61,8 +41,6 @@ def courses_inline(university):
 
     return builder.as_markup(resize_keyboard=True)
 
-
-
 def profile(text: str | list):
     builder = ReplyKeyboardBuilder()
 
@@ -71,3 +49,23 @@ def profile(text: str | list):
     
     [builder.button(text=txt) for txt in text]
     return builder.as_markup(resize_keyboard=True, one_time_keyboard=True)
+
+def universities_reply():
+    
+    builder = ReplyKeyboardBuilder()
+    [builder.button(text=item) for item in UNIVERSITIES_ARRAY]
+    builder.button(text="Cancel")
+    builder.adjust(*[4] * 4)
+
+    return builder.as_markup(resize_keyboard=True)
+
+def courses_reply(university):
+    
+    univ_courses = get_courses_for_university(university)
+    
+    builder = ReplyKeyboardBuilder()
+    [builder.button(text=item) for item in univ_courses]
+    builder.button(text="Cancel")
+    builder.adjust(*[1] * 4)
+
+    return builder.as_markup(resize_keyboard=True)
