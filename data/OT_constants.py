@@ -1,5 +1,10 @@
 user_data = {}
 
+BOOL_DICT = {
+    'en': ["Yes", "No"],
+    'ro': ["Yes/Da", "No/Nu"],  
+}
+
 # Define the languages
 LANGUAGES_DICT = {
     'en': "English 🇬🇧",
@@ -11,17 +16,29 @@ LANGUAGES_ARRAY = [
     "Romanian 🇷🇴",
 ]
 
+LANGUAGES_ARRAY_ = [
+    "en",
+    "ro",
+]
+
 LANGUAGES_ICONS = {
     'en': "🇬🇧",
     'ro': "🇷🇴",
 }
 
 UNIVERSITIES_DICT = {
-    "first": ["ARU", "GBS", "LSC"], 
-    "second": ["ESL", "LCCA", "LCCA"],
-    "third": ["LCCM", "CCCU", "BSU"],
-    "fourth": ["UONL", "Regent", "CECOS"],
-    "fiveth": ["PIRSON"], 
+    "ARU":    "Anglia Ruskin University (ARU)",
+    "GBS":    "",
+    "LSC":    "",
+    "ESL":    "",
+    "LCCA":   "",
+    "LCCM":   "",
+    "CCCU":   "",
+    "BSU":    "",
+    "UONL":   "",
+    "Regent": "",
+    "CECOS":  "",
+    "PIRSON": "",
 }
 
 UNIVERSITIES_ARRAY = [
@@ -30,7 +47,7 @@ UNIVERSITIES_ARRAY = [
 ]
 
 COURSES_DICT = {
-    "ARU":    ["International Business Management with FY", "Course ARU2", "Course ARU3"],
+    "ARU":    ["Business Management with FY", "Course ARU2", "Course ARU3"],
     "GBS":    ["Course GBS1", "Course GBS2", "Course GBS" ],
     "LSC":    ["Course ARU1", "Course ARU2", "Course ARU3"],
     "ESL":    ["Course ARU1", "Course ARU2", "Course ARU3"], 
@@ -44,3 +61,11 @@ COURSES_DICT = {
     "PIRSON": ["Course ARU1", "Course ARU2", "Course ARU3"], 
    # Add more universities and their courses as needed
 }
+
+COURSES_FULL_DICT = {
+    "Business Management with FY": "BSc (Hons) International Business Management withFoundation Year", 
+    "Course ARU2":"", 
+    "Course ARU3":"",
+    "Course ARU4":"",
+}
+ 

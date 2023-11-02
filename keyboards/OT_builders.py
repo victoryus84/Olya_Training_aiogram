@@ -1,6 +1,6 @@
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 from aiogram.types import InlineKeyboardButton
-from data.OT_constants import UNIVERSITIES_ARRAY, COURSES_DICT, LANGUAGES_ARRAY
+from data.OT_constants import UNIVERSITIES_ARRAY, COURSES_DICT, LANGUAGES_ARRAY, BOOL_DICT
 from callbacks.OT_procedures import *
 
 def languages_inline():
@@ -56,7 +56,7 @@ def language_reply():
     [builder.button(text=item) for item in LANGUAGES_ARRAY]
     builder.adjust(*[2] * 4)
 
-    return builder.as_markup(resize_keyboard=True, one_time_keyboard=True, input_field_placeholder="Choose a language")
+    return builder.as_markup(resize_keyboard=True, one_time_keyboard=True)
 
 def universities_reply():
     
@@ -64,8 +64,7 @@ def universities_reply():
     [builder.button(text=item) for item in UNIVERSITIES_ARRAY]
     # builder.button(text="Cancel")
     builder.adjust(*[4] * 4)
-
-    return builder.as_markup(resize_keyboard=True)
+    return builder.as_markup(resize_keyboard=True, one_time_keyboard=True)
 
 def courses_reply(university):
     
@@ -76,4 +75,15 @@ def courses_reply(university):
     # builder.button(text="Cancel")
     builder.adjust(*[1] * 4)
 
-    return builder.as_markup(resize_keyboard=True)
+    return builder.as_markup(resize_keyboard=True, one_time_keyboard=True)
+
+def bool_reply(language):
+    bool_array = BOOL_DICT.get(language)
+    builder = ReplyKeyboardBuilder()
+    [builder.button(text=item) for item in bool_array]
+    # builder.button(text="Cancel")
+    builder.adjust(*[2] * 4)
+
+    return builder.as_markup(resize_keyboard=True, one_time_keyboard=True)
+
+

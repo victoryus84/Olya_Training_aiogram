@@ -50,7 +50,7 @@ HELP_MESSAGE = [
 ]
 
 # Define the welcome message for both English and Romanian
-COURSES_MESSAGES1 = {
+COURSES_MESSAGES_BEGIN = {
     'en': (
       "Very important! Why is it absolutely necessary to know general" 
       "information about the university you have applied to during the interview?"
@@ -60,5 +60,47 @@ COURSES_MESSAGES1 = {
        "information about the university you have applied to during the interview?" 
        "Foarte Important! De ce este absolut necesar sa cunosti la interviu informatia generala"
        "despre universitatea la care ai aplicat?"
+    )
+}
+
+COURSES_MESSAGES_BEGIN = {
+    'en': (
+      "Very important! Why is it absolutely necessary to know general" 
+      "information about the university you have applied to during the interview?"
+    ),
+    'ro': (
+       "Very important! Why is it absolutely necessary to know general" 
+       "information about the university you have applied to during the interview?" 
+       "Foarte Important! De ce este absolut necesar sa cunosti la interviu informatia generala"
+       "despre universitatea la care ai aplicat?"
+    )
+}
+
+COURSES_MESSAGES_BEGIN = {
+    'en': (
+      "Very important! Why is it absolutely necessary to know general" 
+      "information about the university you have applied to during the interview?"
+    ),
+    'ro': (
+       "Very important! Why is it absolutely necessary to know general" 
+       "information about the university you have applied to during the interview?" 
+       "Foarte Important! De ce este absolut necesar sa cunosti la interviu informatia generala"
+       "despre universitatea la care ai aplicat?"
+    )
+}
+
+COURSES_MESSAGES_WHY = {
+'en': (
+    "🎓Understanding general information about the university you're applying to is crucial for your success. It goes beyond just passing an interview or an entrance exam – it's about finding the perfect match between your aspirations and the university's values, culture, and opportunities."
+    "\nBy grasping this foundational knowledge, you not only show your genuine interest but also demonstrate that you're making an informed decision about your education. Knowing about the university's history, unique programs, faculty, and campus life equips you to tailor your answers effectively during interviews. It showcases your enthusiasm and proves that you're ready to contribute meaningfully to the university community."
+    "\nIn essence, understanding the university you're applying to is the key to presenting yourself as a candidate who not only meets the academic criteria but also aligns perfectly with the ethos of the institution. It's about making a compelling case for why you belong there and how you can make a significant impact during your academic journey"
+    ),
+'ro': (
+    "🎓Understanding general information about the university you're applying to is crucial for your success. It goes beyond just passing an interview or an entrance exam – it's about finding the perfect match between your aspirations and the university's values, culture, and opportunities."
+    "\nBy grasping this foundational knowledge, you not only show your genuine interest but also demonstrate that you're making an informed decision about your education. Knowing about the university's history, unique programs, faculty, and campus life equips you to tailor your answers effectively during interviews. It showcases your enthusiasm and proves that you're ready to contribute meaningfully to the university community."
+    "\nIn essence, understanding the university you're applying to is the key to presenting yourself as a candidate who not only meets the academic criteria but also aligns perfectly with the ethos of the institution. It's about making a compelling case for why you belong there and how you can make a significant impact during your academic journey"
+    "\n🎓 A înțelege informații generale despre universitatea la care aplici este crucial pentru succesul tău. Aceasta depășește doar trecerea unui interviu sau a unui examen de admitere - este vorba despre găsirea potrivirii perfecte între aspirațiile tale și valorile, cultura și oportunitățile universității."
+    "\nPrin înțelegerea acestei cunoștințe de bază, nu doar arăți un interes sincer, ci și demonstrezi că iei o decizie informată despre educația ta. Cunoașterea istoriei universității, a programelor unice, a corpului profesoral și a vieții de campus te ajută să îți ajustezi răspunsurile în mod eficient în timpul interviurilor. Aceasta evidențiază entuziasmul tău și dovedește că ești pregătit să contribui semnificativ la comunitatea universitară."
+    "\nÎn esență, înțelegerea universității la care aplici este cheia pentru a te prezenta ca un candidat care nu doar îndeplinește criteriile academice, ci se potrivește perfect cu etica instituției. Este vorba despre a face un argument convingător privind de ce aparții acolo și cum poți avea un impact semnificativ în timpul călătoriei tale academice."
     )
 }

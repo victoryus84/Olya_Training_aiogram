@@ -10,7 +10,7 @@ class AntiFloodMiddleware(BaseMiddleware):
 
     def __init__(self, time_limit: int=2) -> None:
         self.limit = TTLCache(maxsize=10_000, ttl=time_limit)
-
+        print("Middleware inited")
     async def __call__(
         self,
         handler: Callable[[Message, Dict[str, Any]], Awaitable[Any]],

@@ -1,10 +1,15 @@
 from aiogram import Router, Bot, F
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, ReplyKeyboardRemove
 from aiogram.filters import CommandStart, Command
-
 from keyboards import OT_inline
-from data.OT_messages import HELP_MESSAGE, BEGIN_MESSAGE, LANGUAGE_MESSAGE
-from data.OT_messages import UNIVERSITY_MESSAGES, COURSES_MESSAGES
+from data.OT_messages import (
+    HELP_MESSAGE, BEGIN_MESSAGE, LANGUAGE_MESSAGE,
+    UNIVERSITY_MESSAGES, COURSES_MESSAGES, COURSES_MESSAGES_BEGIN,
+    COURSES_MESSAGES_WHY
+    )
+from data.OT_constants import (
+    LANGUAGES_DICT, UNIVERSITIES_DICT, COURSES_FULL_DICT
+    )
 
 from keyboards import OT_builders
 from callbacks.OT_procedures import *
@@ -23,37 +28,57 @@ async def help(message: Message, bot: Bot):
         
 # @router.message(CommandStart(), IsAdmin(1490170564))
 @router.message(CommandStart())
-async def start_handler(message: Message, state: FSMContext):
-    print("start_handler")
+async def start_handler(message: Message, state: FSMContext) -> None:
     await state.set_state(Form.BEGIN)
-    await message.answer(BEGIN_MESSAGE.get("ro"), reply_markup=OT_inline.begin_markup)
+    await message.answer(BEGIN_MESSAGE.get("all"), reply_markup=OT_inline.begin_markup)
     
-@router.message(Form.BEGIN)    
-@router.callback_query(F.data == "begin")
-async def language_choise(callback: CallbackQuery, state: FSMContext):
-    print("language_choise")
-    await state.set_state(Form.LANGUAGES)
-    await callback.message.answer(LANGUAGE_MESSAGE.get("ro"), reply_markup=OT_builders.language_reply())  
+@router.callback_query(F.data == "begin", Form.BEGIN)
+async def language_choise(callback: CallbackQuery, state: FSMContext) -> None:
+    await state.set_state(Form.LANGUAGE)
+    await callback.message.answer(LANGUAGE_MESSAGE.get("all"), 
+                                  reply_markup=OT_builders.language_reply(),
+                                  disable_notification=True)  
     
-@router.message(Form.LANGUAGES)
-async def univerersity_handler(message: Message, state: FSMContext):
-    print("univerersity_handler")
-    await state.update_data(name=message.text)
-    await state.set_state(Form.UNIVERSITIES)
-    print(f"univerersity_handler {message.text}")
-    await message.answer(UNIVERSITY_MESSAGES.get("ro"), reply_markup=OT_builders.universities_reply())
+@router.message(Form.LANGUAGE)
+async def univerersity_handler(message: Message, state: FSMContext) -> None:
+    await state.update_data(LANGUAGE=get_dict_key_from_value(message.text, LANGUAGES_DICT))
+    await state.set_state(Form.UNIVERSITY)
+    data = await state.get_data()
+    await message.answer(UNIVERSITY_MESSAGES.get(data["LANGUAGE"]), 
+                         reply_markup=OT_builders.universities_reply(),
+                         disable_notification=True)
     
-@router.message(Form.UNIVERSITIES)
-async def course_handler(message: Message, state: FSMContext):
-    print("course_handler")
-    await state.update_data(name=message.text)
-    await state.set_state(Form.COURSES)
-    print(f"course_handler {message.text}")
-    await message.answer(COURSES_MESSAGES.get("ro"), reply_markup=OT_builders.courses_reply())
-        
-# @router.callback_query(F.data == "begin") 
-# async def send_random_value(callback: CallbackQuery):
-#     await callback.message.answer(COURSES_MESSAGES.get("ro"), reply_markup=OT_builders.courses_inline())      
+@router.message(Form.UNIVERSITY)
+async def course_handler(message: Message, state: FSMContext) -> None:
+    await state.update_data(UNIVERSITY=message.text)
+    await state.set_state(Form.COURSE)
+    data = await state.get_data()
+    await message.answer(COURSES_MESSAGES.get(data["LANGUAGE"]), 
+                         reply_markup=OT_builders.courses_reply(message.text),
+                         disable_notification=True)
+    
+@router.message(Form.COURSE)
+async def course_handler_begin(message: Message, state: FSMContext) -> None:
+    await state.update_data(COURSE=message.text)
+    data = await state.get_data()
+    await message.answer(COURSES_MESSAGES_BEGIN.get(data["LANGUAGE"]), 
+                         reply_markup=OT_inline.begin_course_markup)
+    
+@router.callback_query(F.data == "begin_course", Form.COURSE)
+async def course_handler_begin_callback(callback: CallbackQuery, state: FSMContext) -> None:
+    data = await state.get_data()
+    await callback.message.answer(COURSES_MESSAGES_WHY.get(data["LANGUAGE"]), reply_markup=ReplyKeyboardRemove())      
+    
+    full_university = UNIVERSITIES_DICT.get(data["UNIVERSITY"])
+    full_course = COURSES_FULL_DICT.get(data["COURSE"])
+    aprove_text = f"Ai aplicat la cursul <b><u>{full_course}</u></b>  universitatea <b><u>{full_university}</u></b>" 
+    await callback.message.answer(aprove_text, reply_markup=OT_builders.bool_reply(data["LANGUAGE"]))      
+    await state.clear()
+
+   
+    # print(formatted_text)
+
+     
     
 
     

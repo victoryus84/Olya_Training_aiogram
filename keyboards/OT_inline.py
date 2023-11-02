@@ -1,6 +1,6 @@
 from aiogram.types import (
     InlineKeyboardMarkup,
-    InlineKeyboardButton
+    InlineKeyboardButton,
 )
 
 links = InlineKeyboardMarkup(
@@ -28,3 +28,10 @@ begin_markup = InlineKeyboardMarkup(
     ]
 )
 
+begin_course_markup = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text="Why? \n De ce?", callback_data="begin_course")
+        ]
+    ]
+)
