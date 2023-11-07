@@ -2,12 +2,15 @@ import asyncio
 import logging
 import sys
 from aiogram import Dispatcher
-from bot_instanse import bot
-from handlers import OT_user_begin, OT_user_handlers
-from middlewares.antiflood import AntiFloodMiddleware
-    
-async def main() -> None:
 
+from bot_instanse import bot
+from handlers import OT_user_begin
+from middlewares.antiflood import AntiFloodMiddleware
+from data.OT_storage import SQLiteStorage
+
+async def main() -> None:
+    
+    storage = SQLiteStorage()
     dp = Dispatcher()
     
     # dp.message.middleware(CheckSubscription())
@@ -15,12 +18,13 @@ async def main() -> None:
 
     dp.include_routers(
         OT_user_begin.router,
-        # OT_user_handlers.router,
+        # OT_ARU_user_handlers.router,
     )
 
-    # await bot.delete_webhook(drop_pending_updates=True)
+    # 
     try:
         await dp.start_polling(bot)
+        await bot.delete_webhook(drop_pending_updates=True)
     finally:
         bot.session.close()
 

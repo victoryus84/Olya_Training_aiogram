@@ -6,4 +6,4 @@ class Form(StatesGroup):
     LANGUAGE = State()
     UNIVERSITY = State()
     COURSE = State()
-    
+    CHOISE = State()

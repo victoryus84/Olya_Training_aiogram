@@ -3,7 +3,7 @@ from typing import Callable, Awaitable, Dict, Any
 from aiogram import BaseMiddleware
 from aiogram.types import Message
 
-from keyboards.inline import sub_channel
+from keyboards.OT_inline import sub_channel
 
 
 class CheckSubscription(BaseMiddleware):

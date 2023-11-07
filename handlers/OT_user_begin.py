@@ -20,7 +20,7 @@ router = Router()
 
 @router.message(F.text.lower().in_(["hi", "hello", "привет"]))
 async def greetings(message: Message):
-    await message.reply("Hello mate!")
+    await message.reply("Hello mate! (MENU->START OR type <</start>>)")
 
 @router.message(Command(commands=["help"]))
 async def help(message: Message, bot: Bot):
@@ -71,12 +71,13 @@ async def course_handler_begin_callback(callback: CallbackQuery, state: FSMConte
     
     full_university = UNIVERSITIES_DICT.get(data["UNIVERSITY"])
     full_course = COURSES_FULL_DICT.get(data["COURSE"])
-    aprove_text = f"Ai aplicat la cursul <b><u>{full_course}</u></b>  universitatea <b><u>{full_university}</u></b>" 
+    aprove_text = f"Ai aplicat la cursul <b><u>{full_course}</u></b>  universitatea <b><u>{full_university}</u></b> ?" 
     await callback.message.answer(aprove_text, reply_markup=OT_builders.bool_reply(data["LANGUAGE"]))      
-    await state.clear()
 
-   
-    # print(formatted_text)
+    await state.set_state(Form.CHOISE)
+    await state.update_data(CHOISE=callback.message.text)
+    data = await state.get_data()
+    print(data)
 
      
     
