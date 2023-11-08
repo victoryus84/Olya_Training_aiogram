@@ -10,6 +10,10 @@ from data.OT_storage import SQLiteStorage
 
 async def main() -> None:
     
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+    )
     storage = SQLiteStorage()
     dp = Dispatcher()
     
@@ -29,5 +33,4 @@ async def main() -> None:
         bot.session.close()
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.WARNING, stream=sys.stdout)
     asyncio.run(main())

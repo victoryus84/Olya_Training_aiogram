@@ -58,33 +58,7 @@ COURSES_MESSAGES_BEGIN = {
     'ro': (
        "Very important! Why is it absolutely necessary to know general" 
        "information about the university you have applied to during the interview?" 
-       "Foarte Important! De ce este absolut necesar sa cunosti la interviu informatia generala"
-       "despre universitatea la care ai aplicat?"
-    )
-}
-
-COURSES_MESSAGES_BEGIN = {
-    'en': (
-      "Very important! Why is it absolutely necessary to know general" 
-      "information about the university you have applied to during the interview?"
-    ),
-    'ro': (
-       "Very important! Why is it absolutely necessary to know general" 
-       "information about the university you have applied to during the interview?" 
-       "Foarte Important! De ce este absolut necesar sa cunosti la interviu informatia generala"
-       "despre universitatea la care ai aplicat?"
-    )
-}
-
-COURSES_MESSAGES_BEGIN = {
-    'en': (
-      "Very important! Why is it absolutely necessary to know general" 
-      "information about the university you have applied to during the interview?"
-    ),
-    'ro': (
-       "Very important! Why is it absolutely necessary to know general" 
-       "information about the university you have applied to during the interview?" 
-       "Foarte Important! De ce este absolut necesar sa cunosti la interviu informatia generala"
+       "\nFoarte Important! De ce este absolut necesar sa cunosti la interviu informatia generala"
        "despre universitatea la care ai aplicat?"
     )
 }

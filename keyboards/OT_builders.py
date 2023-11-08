@@ -30,9 +30,10 @@ def courses_reply(university):
     
     conn = SQLiteStorage()._get_connection()
     cursor = conn.cursor()
-    cursor.execute("""SELECT university_id FROM universities WHERE university_name = ?""",  (university,))
-    university_id = cursor.fetchone()
-    cursor.execute("""SELECT course_name FROM courses WHERE university_id = ?""", (university_id[0],))
+    cursor.execute("""SELECT courses.course_name
+                      FROM courses
+                      INNER JOIN universities ON courses.university_id = universities.university_id
+                      WHERE universities.university_name = ?""", (university,))
     univ_courses = [row[0] for row in cursor.fetchall()]
     cursor.close()
     # univ_courses = get_courses_for_university(university)

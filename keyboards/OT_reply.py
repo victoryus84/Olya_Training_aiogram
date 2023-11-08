@@ -39,6 +39,38 @@ language_markup = ReplyKeyboardMarkup(
     input_field_placeholder="Choose a language",
 )
     
-        
+ok_markup = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="OK")
+        ]
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=True,
+    input_field_placeholder="Click button please",
+)
+
+next_markup = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="Next")
+        ]
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=True,
+    input_field_placeholder="Click button please",
+)
+
+show_markup = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="""Show the interview questions.
+                \nAfiseaza intrebarile pentru interviu.""")
+        ]
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=True,
+    input_field_placeholder="Click button please",
+)        
     
     

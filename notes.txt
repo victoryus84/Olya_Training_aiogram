@@ -59,3 +59,12 @@ async def main():
 
 
 app.run(main())
+
+********************************************************************************************
+SELECT mess_desc
+FROM courses_mess c_mess
+INNER JOIN courses ON courses.course_id = c_mess.course_id
+WHERE courses.course_name = "Business Management with FY"
+AND c_mess.mess_lang = "ro"
+AND c_mess.mess_step = 1
+********************************************************************************************

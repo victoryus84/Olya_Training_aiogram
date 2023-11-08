@@ -35,3 +35,28 @@ begin_course_markup = InlineKeyboardMarkup(
         ]
     ]
 )
+
+ok_markup = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text="OK \n Bine?", callback_data="ok_step")
+        ]
+    ]
+)
+
+next_markup = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text="Next \n Pasul Urmator", callback_data="next_step")
+        ]
+    ]
+)
+
+show_markup = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text="""Show the interview questions.
+                \nAfiseaza intrebarile pentru interviu.""", callback_data="next_step")
+        ]
+    ]
+)
