@@ -19,6 +19,7 @@ class SQLiteStorage():
             )
         """)
         
+        #  universities
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS universities (
             university_id INTEGER PRIMARY KEY,
@@ -28,6 +29,7 @@ class SQLiteStorage():
         )
         """)
 
+        #  courses
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS courses (
             course_id INTEGER PRIMARY KEY,
@@ -38,6 +40,7 @@ class SQLiteStorage():
         )
         """)
         
+        #  courses_mess
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS courses_mess (
             mess_id INTEGER PRIMARY KEY,

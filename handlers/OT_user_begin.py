@@ -5,7 +5,7 @@ from keyboards import OT_inline
 from data.OT_messages import (
     HELP_MESSAGE, BEGIN_MESSAGE, LANGUAGE_MESSAGE,
     UNIVERSITY_MESSAGES, COURSES_MESSAGES, COURSES_MESSAGES_BEGIN,
-    COURSES_MESSAGES_WHY
+    COURSES_MESSAGES_WHY, COURSES_CANCEL
     )
 from data.OT_constants import (
     LANGUAGES_DICT, UNIVERSITIES_DICT, COURSES_FULL_DICT
@@ -30,7 +30,8 @@ async def help(message: Message, bot: Bot):
 @router.message(CommandStart())
 async def start_handler(message: Message, state: FSMContext) -> None:
     await state.set_state(Form.BEGIN)
-    await message.answer(BEGIN_MESSAGE.get("all"), reply_markup=OT_inline.begin_markup)
+    await message.answer(BEGIN_MESSAGE.get("all"), 
+                         reply_markup=OT_inline.begin_markup)
     
 @router.callback_query(F.data == "begin", Form.BEGIN)
 async def language_choise(callback: CallbackQuery, state: FSMContext) -> None:
@@ -77,8 +78,16 @@ async def course_handler_begin_callback(callback: CallbackQuery, state: FSMConte
     await state.set_state(Form.CHOISE)
     await state.update_data(CHOISE=callback.message.text)
     data = await state.get_data()
-    print(data)
-
+    
+@router.message(Form.CHOISE)
+async def course_handler_start(message: Message, state: FSMContext) -> None:
+    data = await state.get_data()
+    if (message.text == "No/Nu") or (message.text == "No"):
+        await message.answer(COURSES_CANCEL.get(data["LANGUAGE"]))
+        await state.clear()
+    else:
+        await message.answer(COURSES_MESSAGES_BEGIN.get(data["LANGUAGE"]), 
+                         reply_markup=OT_inline.begin_course_markup)
      
     
 

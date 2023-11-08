@@ -104,3 +104,13 @@ COURSES_MESSAGES_WHY = {
     "\nÎn esență, înțelegerea universității la care aplici este cheia pentru a te prezenta ca un candidat care nu doar îndeplinește criteriile academice, ci se potrivește perfect cu etica instituției. Este vorba despre a face un argument convingător privind de ce aparții acolo și cum poți avea un impact semnificativ în timpul călătoriei tale academice."
     )
 }
+
+COURSES_CANCEL = {
+'en': (
+    """If the course and/or university is incorrect, please contact on WhatsApp or Telegram at +44 7821492172.🆘"""
+    ),
+'ro': (
+    """If the course and/or university is incorrect, please contact on WhatsApp or Telegram at +44 7821492172 🆘
+    \nDaca cursul si/sau universitatea e gresita, contacteaza pe Wapp sau Telegram +44 7821492172🆘"""
+    )
+}
