@@ -88,3 +88,13 @@ COURSES_CANCEL = {
     \nDaca cursul si/sau universitatea e gresita, contacteaza pe Wapp sau Telegram +44 7821492172🆘"""
     )
 }
+
+FEEDBACK_COMMENT = {
+'en': (
+    """Leave a comment or say why you chose this option."""
+    ),
+'ro': (
+    """Leave a comment or say why you chose this option.
+    \nLasă un comentariu sau spune de ce ai ales această opțiune."""
+    )
+}

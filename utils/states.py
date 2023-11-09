@@ -1,7 +1,7 @@
 from aiogram.fsm.state import StatesGroup, State
 
 
-class Form(StatesGroup):
+class Questions(StatesGroup):
     BEGIN = State()
     LANGUAGE = State()
     UNIVERSITY = State()
@@ -37,3 +37,11 @@ class Form(StatesGroup):
     CHOICE28 = State()
     CHOICE29 = State()
     CHOICE30 = State()
+    CLARITY = State()
+    CLARITY_FEED = State()
+    USEFULNESS = State()
+    USEFULNESS_FEED = State()
+    SUPPORT = State()
+    SUPPORT_FEED = State()
+    END = State()    
+  

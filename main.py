@@ -4,7 +4,7 @@ import sys
 from aiogram import Dispatcher
 
 from bot_instanse import bot
-from handlers import OT_user_begin
+from handlers import OT_user_begin, OT_user_feedback
 from middlewares.antiflood import AntiFloodMiddleware
 from data.OT_storage import SQLiteStorage
 
@@ -22,7 +22,7 @@ async def main() -> None:
 
     dp.include_routers(
         OT_user_begin.router,
-        # OT_ARU_user_handlers.router,
+        OT_user_feedback.router,
     )
 
     # 

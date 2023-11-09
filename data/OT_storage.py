@@ -51,6 +51,29 @@ class SQLiteStorage():
         )
         """)
         
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS feedback_mess (
+            feed_id 	INTEGER PRIMARY KEY,
+            feed_desc	TEXT NOT NULL,
+            feed_lang	TEXT,
+            feed_step	INTEGER
+        )
+        """)
+
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS feedback_res (
+	        feed_id	                INTEGER PRIMARY KEY,
+	        feed_user_id	        INTEGER,
+	        feed_user_name	        TEXT,
+	        feed_clarity	        TEXT,
+	        feed_clarity_comment	TEXT,
+	        feed_usefulness	        TEXT,
+	        feed_usefulness_comment	TEXT,
+	        feed_support	        TEXT,
+	        feed_support_comment	TEXT
+	    )
+        """)
+        
         # insert datas only first time:
         # universities:
         if cursor.execute("""select university_id from universities""").fetchone() == None:
