@@ -3,6 +3,9 @@ Merge to main branch
 2.git merge dev
 3.git push  
 
+Force branch change 
+1. git checkout -f another-branch
+
 pyrogram buttons:
 from pyrogram import Client
 from pyrogram.types import (ReplyKeyboardMarkup, InlineKeyboardMarkup,
