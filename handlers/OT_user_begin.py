@@ -83,9 +83,9 @@ async def course_handler_begin_callback(callback: CallbackQuery, state: FSMConte
 async def course_handler_start(message: Message, state: FSMContext) -> None:
     data = await state.get_data()
     if (message.text == "No/Nu") or (message.text == "No"):
-        await message.answer("...", reply_markup=ReplyKeyboardRemove())      
+        # await message.answer("...", reply_markup=ReplyKeyboardRemove())      
         await message.answer(COURSES_CANCEL.get(data["LANGUAGE"]))
-        await state.clear()
+        # await state.clear()
     else:
         conn = SQLiteStorage()._get_connection()
         cursor = conn.cursor()
