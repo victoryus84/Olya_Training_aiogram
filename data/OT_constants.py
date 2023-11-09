@@ -68,4 +68,10 @@ COURSES_FULL_DICT = {
     "Course ARU3":"",
     "Course ARU4":"",
 }
+
+FEEDBACK_CHOISES_ARRAY = [
+    "Excellent/Excelent",
+    "Acceptable/Acceptabil",
+    "Poor/Slab",
+]
  

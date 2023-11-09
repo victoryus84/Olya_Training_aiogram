@@ -6,7 +6,8 @@ from keyboards import OT_builders, OT_inline, OT_reply
 from callbacks.OT_procedures import *
 from aiogram.fsm.context import FSMContext
 from utils.states import Questions as Feedback
-from data.OT_messages import FEEDBACK_COMMENT
+from data.OT_messages import FEEDBACK_COMMENT, FEEDBACK_WARNING 
+from data.OT_constants import FEEDBACK_CHOISES_ARRAY
 
 router = Router()
 
@@ -27,11 +28,14 @@ async def feedback_handler_start(message: Message, state: FSMContext) -> None:
     
 @router.message(Feedback.CLARITY)
 async def feedback_handler_clarity_feed(message: Message, state: FSMContext) -> None:
-    await state.update_data(CLARITY=message.text)
     data = await state.get_data()
-    await state.set_state(Feedback.CLARITY_FEED)
-    await message.answer(FEEDBACK_COMMENT.get(data["LANGUAGE"]))
-        
+    if message.text in FEEDBACK_CHOISES_ARRAY:
+        await state.update_data(CLARITY=message.text)
+        await state.set_state(Feedback.CLARITY_FEED)
+        await message.answer(FEEDBACK_COMMENT.get(data["LANGUAGE"]))
+    else:
+        await message.answer(FEEDBACK_WARNING.get(data["LANGUAGE"]))    
+            
 @router.message(Feedback.CLARITY_FEED)
 async def feedback_handler_usefulness(message: Message, state: FSMContext) -> None:
     await state.update_data(CLARITY_FEED=message.text)
@@ -50,11 +54,14 @@ async def feedback_handler_usefulness(message: Message, state: FSMContext) -> No
     
 @router.message(Feedback.USEFULNESS)
 async def feedback_handler_usefulness_feed(message: Message, state: FSMContext) -> None:
-    await state.update_data(USEFULNESS=message.text)
     data = await state.get_data()
-    await state.set_state(Feedback.USEFULNESS_FEED)
-    await message.answer(FEEDBACK_COMMENT.get(data["LANGUAGE"]))
-
+    if message.text in FEEDBACK_CHOISES_ARRAY:
+        await state.update_data(USEFULNESS=message.text)
+        await state.set_state(Feedback.USEFULNESS_FEED)
+        await message.answer(FEEDBACK_COMMENT.get(data["LANGUAGE"]))
+    else:
+        await message.answer(FEEDBACK_WARNING.get(data["LANGUAGE"]))    
+    
 @router.message(Feedback.USEFULNESS_FEED)
 async def feedback_handler_support(message: Message, state: FSMContext) -> None:
     await state.update_data(USEFULNESS_FEED=message.text)
@@ -73,11 +80,14 @@ async def feedback_handler_support(message: Message, state: FSMContext) -> None:
     
 @router.message(Feedback.SUPPORT)
 async def feedback_handler_support_feed(message: Message, state: FSMContext) -> None:
-    await state.update_data(SUPPORT=message.text)
     data = await state.get_data()
-    await state.set_state(Feedback.SUPPORT_FEED)
-    await message.answer(FEEDBACK_COMMENT.get(data["LANGUAGE"]))    
-
+    if message.text in FEEDBACK_CHOISES_ARRAY:
+        await state.update_data(SUPPORT=message.text)
+        await state.set_state(Feedback.SUPPORT_FEED)
+        await message.answer(FEEDBACK_COMMENT.get(data["LANGUAGE"]))    
+    else:
+        await message.answer(FEEDBACK_WARNING.get(data["LANGUAGE"]))    
+        
 @router.message(Feedback.SUPPORT_FEED)
 async def feedback_handler_end(message: Message, state: FSMContext) -> None:
     await state.update_data(SUPPORT_FEED=message.text)
@@ -92,7 +102,7 @@ async def feedback_handler_end(message: Message, state: FSMContext) -> None:
                           AND f_mess.feed_step = ?""", (data["LANGUAGE"], 4))
     feedback_mess = cursor.fetchone()
     cursor.close()
-    await message.answer(feedback_mess[0])
+    await message.answer(feedback_mess[0], reply_markup=ReplyKeyboardRemove())
     
     # insert data to DB
     conn = SQLiteStorage()._get_connection()

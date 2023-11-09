@@ -98,3 +98,13 @@ FEEDBACK_COMMENT = {
     \nLasă un comentariu sau spune de ce ai ales această opțiune."""
     )
 }
+
+FEEDBACK_WARNING = {
+'en': (
+    """Only one of the buttons can be clicked!"""
+    ),
+'ro': (
+    """Only one of the buttons can be clicked!
+    \nSe poate face doar clic pe unul dintre butoane!"""
+    )
+}
